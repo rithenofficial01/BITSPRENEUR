@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIEDS Student Team Recruitment</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            overflow: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: -webkit-linear-gradient(left, #ff9a9e, #fad0c4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 1.5s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            animation: popIn 1.5s ease-in-out 1.5s forwards;
+        }
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .card {
+            width: 150px;
+            height: 200px;
+            perspective: 1200px;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-in-out;
+        }
+        .card:active .card-inner,
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .card-front {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #fff;
+        }
+        .card-back {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>PIEDS Student Team Recruitment</h1>
+    <p>After 45 days of intense competition, 330 candidates battled through 4 challenging rounds. Only 15 emerged victorious, securing a coveted spot on the PIEDS Student Team.</p>
+    <p>The journey was filled with resilience, learning, and a thrilling ₹25K cash prize. More than winning, it was about growth, experiences, and pushing limits.</p>
+    
+    <div class="container" id="cardContainer"></div>
+    
+    <p class="footer">Tap or hover over a card to reveal the recruit.</p>
+    
+    <script>
+        const candidates = [
+            "Alhan Santani", "Jiya Sethi", "Siddharth Sudunagunta", "Harshit Saini", "Krrish Narayan",
+            "Mithilesh Babu", "Chaitanya Goyal", "Prisha Singhal", "Pushti Shah", "Pritish Aggrawal",
+            "Parva Doshi", "Srijan Sahay", "Sarvesh Prakash", "Avinash Saraf", "Tushar Kakwani"
+        ];
+        const container = document.getElementById("cardContainer");
+        
+        candidates.forEach(name => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">🎓</div>
+                    <div class="card-back">${name}</div>
+                </div>
+            `;
+            
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
